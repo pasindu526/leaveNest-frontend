@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// Vite env vars are available via import.meta.env and are baked in at build time.
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api";
+
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: API_BASE,
   withCredentials: true,
 });
 
