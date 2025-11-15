@@ -24,9 +24,7 @@ const Login: React.FC = () => {
   const [message, setMessage] = useState("");
   const [showRoleSelect, setShowRoleSelect] = useState(false);
   const [roles, setRoles] = useState<string[]>([]);
-  const [loginResponse, setLoginResponse] = useState<LoginResponse | null>(
-    null
-  );
+  const [, setLoginResponse] = useState<LoginResponse | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
