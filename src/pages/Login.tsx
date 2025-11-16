@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { Input } from "../components/ui/input";
+import logo from "../assets/LNLogo.png";
 
 interface LoginResponse {
   token: string;
@@ -81,10 +82,11 @@ const Login: React.FC = () => {
         className="bg-white/90 backdrop-blur-lg p-10 rounded-3xl shadow-2xl w-full max-w-md border border-blue-100 relative"
       >
         <div className="flex flex-col items-center mb-8">
-          <div className="bg-blue-600 rounded-full p-3 mb-4 shadow-lg">
-            <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+          <div className="bg-white rounded-full p-1 mb-4 shadow-lg h-16 lg:h-20 w-16 lg:w-20">
+            {/* <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
               <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4c0 .7.5 1.2 1.2 1.2h16.8c.7 0 1.2-.5 1.2-1.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-            </svg>
+            </svg> */}
+            <img src={logo} alt="LeaveNest Logo" className="object-cover" />
           </div>
           <h1 className="text-4xl font-extrabold text-blue-700 mb-2 tracking-tight font-sans">
             LeaveNest
@@ -135,7 +137,7 @@ const Login: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition mb-2"
+          className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition mb-2 cursor-pointer"
         >
           Login
         </button>
@@ -146,17 +148,27 @@ const Login: React.FC = () => {
       </form>
       {/* Role select popup */}
       {showRoleSelect && (
-        <div className="fixed inset-0 flex items-center justify-center  rounded-2xl bg-black/20 z-50">
-          <div className="bg-white rounded-2xl shadow-2xl p-8 min-w-[300px] flex flex-col items-center">
+        <div className="fixed inset-0 flex items-center justify-center rounded-2xl bg-black/30 z-50">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 min-w-[400px] flex flex-col items-center relative">
+            {/* Close (X) button */}
+            <button
+              type="button"
+              aria-label="Close role selector"
+              onClick={() => setShowRoleSelect(false)}
+              className="absolute top-1 right-3 text-gray-600 hover:text-gray-800 rounded-full p-1 text-xl font-bold cursor-pointer"
+            >
+              &times;
+            </button>
+
             <h3 className="text-lg font-semibold text-blue-700 mb-4">
-              Select your role to continue
+              Select dashboard to continue
             </h3>
             <div className="flex flex-col gap-3 w-full">
               {roles.map((role) => (
                 <button
                   key={role}
                   type="button"
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition w-full"
+                  className="bg-blue-500 text-white px-4 py-2.5 rounded-lg shadow hover:bg-blue-700 transition w-full cursor-pointer"
                   onClick={() => handleRoleSelect(role)}
                 >
                   {role.charAt(0).toUpperCase() + role.slice(1)} Dashboard
