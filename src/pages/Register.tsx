@@ -13,6 +13,8 @@ import {
   SelectItem,
 } from "../components/ui/select";
 
+import logo from "../assets/LNLogo.png";
+
 interface RegisterResponse {
   message: string;
   user: {
@@ -118,10 +120,11 @@ const Register: React.FC<RegisterProps> = ({ open = true, onClose }) => {
           </button>
         )}
         <div className="flex flex-col items-center mb-8">
-          <div className="bg-blue-600 rounded-full p-3 mb-4 shadow-lg">
-            <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+          <div className="bg-white rounded-full p-1 mb-4 shadow-lg h-16 lg:h-20 w-16 lg:w-20">
+            {/* <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
               <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4c0 .7.5 1.2 1.2 1.2h16.8c.7 0 1.2-.5 1.2-1.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
-            </svg>
+            </svg> */}
+            <img src={logo} alt="LeaveNest Logo" className="object-cover" />
           </div>
           <h1 className="text-3xl font-extrabold text-blue-700 mb-1 tracking-tight font-sans">
             LeaveNest - Create Account
