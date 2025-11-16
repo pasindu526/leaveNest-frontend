@@ -82,6 +82,14 @@ const AdminDashboard: React.FC = () => {
     return (user?.roles?.[0] as string) || "admin";
   };
   const [role, setRole] = useState<string>(getInitialRole);
+  // normalize current roles and treat as "admin-only" only when the user has 'admin' role
+  // and does NOT also have the 'employee' role.
+  const currentRoles = Array.isArray(user?.roles)
+    ? user.roles.map((r: string) => r.toString().trim().toLowerCase())
+    : [];
+  const isAdminOnly =
+    (role === "admin" || currentRoles.includes("admin")) &&
+    !currentRoles.includes("employee");
 
   useEffect(() => {
     const onStorage = (e: StorageEvent) => {
@@ -281,22 +289,23 @@ const AdminDashboard: React.FC = () => {
                               </span>
                             </td>
                             <td className="px-4 py-3 flex gap-2">
-                              {leave.status.toLowerCase() === "pending" && (
-                                <>
-                                  <button
-                                    className="border border-green-600 text-green-600 px-4 py-2 rounded-sm font-medium hover:bg-green-50 transition cursor-pointer text-xs"
-                                    onClick={() => handleApprove(leave._id)}
-                                  >
-                                    Approve
-                                  </button>
-                                  <button
-                                    className="border border-red-600 text-red-600 px-4 py-2 rounded-sm font-medium hover:bg-red-50 transition cursor-pointer text-xs"
-                                    onClick={() => handleReject(leave._id)}
-                                  >
-                                    Reject
-                                  </button>
-                                </>
-                              )}
+                              {leave.status.toLowerCase() === "pending" &&
+                                isAdminOnly && (
+                                  <>
+                                    <button
+                                      className="border border-green-600 text-green-600 px-4 py-2 rounded-sm font-medium hover:bg-green-50 transition cursor-pointer text-xs"
+                                      onClick={() => handleApprove(leave._id)}
+                                    >
+                                      Approve
+                                    </button>
+                                    <button
+                                      className="border border-red-600 text-red-600 px-4 py-2 rounded-sm font-medium hover:bg-red-50 transition cursor-pointer text-xs"
+                                      onClick={() => handleReject(leave._id)}
+                                    >
+                                      Reject
+                                    </button>
+                                  </>
+                                )}
                               <button
                                 className="border border-blue-600 text-blue-600 px-4 py-2 rounded-sm font-medium hover:bg-blue-50 transition cursor-pointer text-xs"
                                 onClick={() => handleView(leave._id)}

@@ -95,31 +95,39 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({
   );
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-      <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+    <div className="w-full mx-auto mb-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="flex-1 bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center">
         <span className="text-4xl mb-2 text-blue-500">{/* icon */}</span>
-        <h2 className="text-xl font-semibold mb-1">Total Employees</h2>
+        <h2 className="text-lg text-center font-semibold mb-1">
+          Total Employees
+        </h2>
         <p className="text-2xl font-bold text-gray-700">
           {filteredUsers.length}
         </p>
       </div>
-      <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+      <div className="flex-1 bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center">
         <span className="text-4xl mb-2 text-green-500">{/* icon */}</span>
-        <h2 className="text-xl font-semibold mb-1">Pending Leaves</h2>
+        <h2 className="text-lg text-center font-semibold mb-1">
+          Pending Leaves
+        </h2>
         <p className="text-2xl font-bold text-gray-700">
           {filteredPending.length}
         </p>
       </div>
-      <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+      <div className="flex-1 bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center">
         <span className="text-4xl mb-2 text-indigo-500">{/* icon */}</span>
-        <h2 className="text-xl font-semibold mb-1">Approved Leaves</h2>
+        <h2 className="text-lg text-center font-semibold mb-1">
+          Approved Leaves
+        </h2>
         <p className="text-2xl font-bold text-gray-700">
           {filteredApproved.length}
         </p>
       </div>
-      <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
+      <div className="flex-1 bg-white rounded-lg shadow p-6 flex flex-col items-center justify-center">
         <span className="text-4xl mb-2 text-indigo-500">{/* icon */}</span>
-        <h2 className="text-xl font-semibold mb-1">Rejected Leaves</h2>
+        <h2 className="text-lg text-center font-semibold mb-1">
+          Rejected Leaves
+        </h2>
         <p className="text-2xl font-bold text-gray-700">
           {filteredRejected.length}
         </p>

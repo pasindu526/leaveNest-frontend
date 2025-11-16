@@ -159,7 +159,7 @@ const Header: React.FC<HeaderProps> = ({
 
         <div className="absolute flex items-center gap-4 bg-white left-2 top-22 md:left-4 md:top-4 rounded-lg">
           <button
-            className="p-2 md:p-4 rounded-md hover:bg-gray-100 lg:hidden focus:outline-none"
+            className="p-2 md:p-4 rounded-md hover:bg-gray-100 lg:hidden focus:outline-none cursor-pointer"
             onClick={onToggleSidebar}
             aria-label="Toggle sidebar"
           >
