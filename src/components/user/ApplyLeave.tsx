@@ -118,8 +118,9 @@ const ApplyLeave: React.FC = () => {
     );
 
     try {
-      console.log("Submitting leave", { formData, selectedDates, proofFile });
-      await API.post("/leaverequests", form);
+      await API.post("/leaverequests", form, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
       Swal.fire({
         toast: true,
         position: "top-end",
